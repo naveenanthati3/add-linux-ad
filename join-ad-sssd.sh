@@ -1146,6 +1146,8 @@ print_domain_controllers()
 
 install_dnsmasq()
 {
+    systemctl disable systemd-resolved
+    systemctl stop systemd-resolved
     test_package "dnsmasq" || install_package "dnsmasq" || return 1
     test_app "${DNSMASQ_PATH}" || return 1
 
