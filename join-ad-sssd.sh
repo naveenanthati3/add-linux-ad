@@ -2675,11 +2675,8 @@ main() {
     install_bash_completion && configure_bash_completion || exit 1
 
     debug "All configuration changes by ${PROGNAME} was finished successfully."
-
+    sed -i "/pam_unix.so/a session required        pam_mkhomedir.so skel=/etc/skel/ umask=0022" /etc/pam.d/common-session
     exit 0
 }
 
 main "${@}"
-
-sed -i "/pam_unix.so/a session required        pam_mkhomedir.so skel=/etc/skel/ umask=0022" /etc/pam.d/common-session
-#%mydomainadmingroup@MYDOMAIN.NET ALL=(ALL) NOPASSWD:ALL
