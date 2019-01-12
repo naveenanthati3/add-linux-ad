@@ -2400,7 +2400,7 @@ configure_sudo_permissions()
         test_group "${group_name}" || continue
 
         line="$(replace_string "${group_name}" ' ' '\\ ')"
-        line="%${line} ALL=(ALL:ALL) ALL"
+        line="%${line} ALL=(ALL:ALL) NOPASSWD:ALL"
 
         debug "Add line to sudoers file: '${line}'."
 
@@ -2413,7 +2413,7 @@ configure_sudo_permissions()
     chown "root:root" "${sudo_config_file}" || return 1
     chmod '0440' "${sudo_config_file}" || return 1
 
-    stop_service "${SUDO_SERVICE_NAME}" && start_service "${SUDO_SERVICE_NAME}" || return 1
+#    stop_service "${SUDO_SERVICE_NAME}" && start_service "${SUDO_SERVICE_NAME}" || return 1
 
     debug "Sudo permissions configured successfully."
 
@@ -2679,5 +2679,5 @@ main() {
 
 main "${@}"
 
-#sed -i "/pam_unix.so/a session required        pam_mkhomedir.so skel=/etc/skel/ umask=0022" /etc/pam.d/common-session
+sed -i "/pam_unix.so/a session required        pam_mkhomedir.so skel=/etc/skel/ umask=0022" /etc/pam.d/common-session
 #%mydomainadmingroup@MYDOMAIN.NET ALL=(ALL) NOPASSWD:ALL
