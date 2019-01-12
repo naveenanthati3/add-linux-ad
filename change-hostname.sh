@@ -13,6 +13,8 @@ fullname=$newhost.rk.local
 #change hostname in /etc/hosts & /etc/hostname
 sudo sed -i "s/$hostn/$newhost  $fullname/g" /etc/hosts
 sudo sed -i "s/$hostn/$newhost/g" /etc/hostname
+#add A record of domain controller
+echo "192.168.1.5 pdc.rk.local" >> /etc/hosts
 
 #display new hostname
 echo "Your new hostname is $newhost"
