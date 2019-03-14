@@ -8,13 +8,13 @@ echo "Existing hostname is $hostn"
 #Ask for new hostname $newhost
 echo "Enter new hostname: "
 read newhost
-fullname=$newhost.rk.local
+fullname=$newhost.shris.local
 
 #change hostname in /etc/hosts & /etc/hostname
 sudo sed -i "s/$hostn/$newhost  $fullname/g" /etc/hosts
 sudo sed -i "s/$hostn/$newhost/g" /etc/hostname
 #add A record of domain controller
-echo "192.168.1.5 pdc.rk.local" >> /etc/hosts
+echo "192.168.1.5 dc01.shris.local" >> /etc/hosts
 
 #display new hostname
 echo "Your new hostname is $newhost"
