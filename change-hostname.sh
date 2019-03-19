@@ -1,4 +1,8 @@
 #!/bin/bash
+if [[ "$EUID" -ne 0 ]]; then
+	echo "Sorry, you need to run this as root"
+	exit
+fi
 #Assign existing hostname to $hostn
 hostn=$(cat /etc/hostname)
 
