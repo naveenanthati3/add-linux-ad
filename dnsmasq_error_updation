@@ -1,0 +1,7 @@
+systemctl disable systemd-resolved
+systemctl stop  systemd-resolved
+service network-manager restart
+service dnsmasq restart
+service dnsmasq status
+nano /etc/default/dnsmasq
+#un comment the IGNORE_RESOLVCONF=yes
