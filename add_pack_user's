@@ -1,0 +1,4 @@
+sudo nano /etc/apparmor.d/tunables/home.d/shris.local
+# add below line
+@{HOMEDIRS}+=/home/shris.local/
+sudo systemctl restart apparmor.service
