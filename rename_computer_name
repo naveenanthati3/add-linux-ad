@@ -1,0 +1,7 @@
+# Firstly you need to remove the computer under Computers in Zentyal Domain
+sudo pdbedit -x -m "COMPUTER NAME"
+
+#Remove the user from sssd database in your machine
+systemctl stop sssd
+sudo rm -rf /var/lib/sss/db/*
+systemctl restart sssd
